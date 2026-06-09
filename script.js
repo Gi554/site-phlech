@@ -63,61 +63,67 @@ updateSimpleParallax();
 window.addEventListener("scroll", updateSimpleParallax, { passive: true });
 window.addEventListener("resize", updateSimpleParallax);
 
-// Cuberto Style Cursor & Magnetic Effects
-const initCubertoCursor = () => {
-  const cursor = document.getElementById("custom-cursor");
-  const links = document.querySelectorAll("a, button, .magnetic");
-  
-  if (!cursor) return;
-
+// Cuberto Reproduction JS
+const initCuberto = () => {
+  // 1. Mouse Follower (Cursor)
+  const cursor = document.getElementById('cb-cursor');
   let mouseX = 0, mouseY = 0;
   let cursorX = 0, cursorY = 0;
 
-  window.addEventListener("mousemove", (e) => {
+  window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
   });
 
-  const animateCursor = () => {
-    // Smooth follow effect
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
-    
-    cursor.style.left = `${cursorX}px`;
-    cursor.style.top = `${cursorY}px`;
-    
-    requestAnimationFrame(animateCursor);
-  };
-  animateCursor();
+  gsap.ticker.add(() => {
+    cursorX += (mouseX - cursorX) * 0.1;
+    cursorY += (mouseY - cursorY) * 0.1;
+    gsap.set(cursor, { x: cursorX, y: cursorY });
+  });
 
-  // Hover states
-  links.forEach(link => {
-    link.addEventListener("mouseenter", () => {
-      cursor.classList.add("active");
+  // 2. Magnetic Elements
+  const magneticElements = document.querySelectorAll('[data-magnetic]');
+  magneticElements.forEach((el) => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      gsap.to(el, {
+        x: x * 0.4,
+        y: y * 0.4,
+        duration: 0.4,
+        ease: 'power2.out'
+      });
     });
-    link.addEventListener("mouseleave", () => {
-      cursor.classList.remove("active");
+    el.addEventListener('mouseleave', () => {
+      gsap.to(el, {
+        x: 0,
+        y: 0,
+        duration: 0.4,
+        ease: 'elastic.out(1, 0.3)'
+      });
     });
+  });
 
-    // Magnetic effect
-    if (link.classList.contains("magnetic")) {
-      link.addEventListener("mousemove", (e) => {
-        const rect = link.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        
-        link.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-      });
-      
-      link.addEventListener("mouseleave", () => {
-        link.style.transform = `translate(0px, 0px)`;
-      });
-    }
+  // 3. Cursor Hover Effect
+  const interactive = document.querySelectorAll('a, button, .cb-menu-toggle, [data-magnetic]');
+  interactive.forEach((el) => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+  });
+
+  // 4. Hero Reveal Animation
+  gsap.to('.cb-hero-line span', {
+    y: 0,
+    stagger: 0.1,
+    duration: 1.2,
+    ease: 'power4.out',
+    delay: 0.5
   });
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  initTeamAccordion();
-  initCubertoCursor();
+document.addEventListener('DOMContentLoaded', () => {
+  initCuberto();
+  initTeamAccordion(); // Keeping existing logic if needed
 });
 

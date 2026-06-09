@@ -10,50 +10,58 @@
     <title>Phlech | Solutions numériques, cybersécurité et IA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   </head>
-  <body class="is-studio-style">
-    <div class="site-shell">
-      <header class="site-header" data-header>
-        <a class="brand" href="#top" aria-label="Phlech">
-          <img src="assets/logo-horizontal-dark.svg" alt="Phlech" />
-        </a>
-        <nav class="main-nav" aria-label="Navigation principale">
-          <a href="#services">Services</a>
-          <a href="equipe.html">Équipe</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <a class="header-cta" href="#contact">
-          <span>Demander un audit</span>
-        </a>
+  <body class="cuberto-page">
+    <div id="cb-cursor"></div>
+    
+    <div class="cb-main">
+      <header class="cb-header">
+        <div class="cb-header-content">
+          <a class="cb-logo" href="#top">
+            <img src="assets/logo-horizontal-dark.svg" alt="Phlech" />
+          </a>
+          <nav class="cb-nav">
+            <div class="cb-nav-item"><a href="#services" data-magnetic>Services</a></div>
+            <div class="cb-nav-item"><a href="equipe.html" data-magnetic>Équipe</a></div>
+            <div class="cb-nav-item"><a href="#contact" data-magnetic>Contact</a></div>
+          </nav>
+          <div class="cb-menu-toggle" data-magnetic>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
       </header>
 
-      <main id="top">
-        <section class="hero-studio" id="top">
-          <div class="hero-studio-bg">
-            <img src="assets/phlech-workspace.png" alt="Phlech Workspace" />
-            <div class="hero-studio-overlay"></div>
-          </div>
-          
-          <div class="hero-studio-content">
-            <div class="hero-studio-inner">
-              <span class="hero-studio-badge">Digital Engineering Studio</span>
-              <h1>Façonner le futur<br>numérique <em>entreprise.</em></h1>
-              <p>Applications sur mesure • Cybersécurité • Intelligence Artificielle • Infrastructures locales</p>
-              <div class="hero-studio-actions">
-                <a href="#contact" class="btn-studio">Démarrer un projet</a>
-              </div>
+      <main>
+        <section class="cb-hero" id="top">
+          <div class="cb-hero-container">
+            <div class="cb-hero-title">
+              <div class="cb-hero-line"><span>Digital Design &</span></div>
+              <div class="cb-hero-line"><span>Engineering <em>Agency</em></span></div>
             </div>
-          </div>
-
-          <div class="hero-marquee">
-            <div class="marquee-track">
-              <span>PHLECH • SOLUTIONS NUMÉRIQUES • CYBERSÉCURITÉ • INTELLIGENCE ARTIFICIELLE • INFRASTRUCTURES •&nbsp;</span>
-              <span>PHLECH • SOLUTIONS NUMÉRIQUES • CYBERSÉCURITÉ • INTELLIGENCE ARTIFICIELLE • INFRASTRUCTURES •&nbsp;</span>
+            
+            <div class="cb-hero-footer">
+              <div class="cb-hero-description">
+                <p>Phlech est une agence d'ingénierie numérique spécialisée dans la création de solutions logicielles, la cybersécurité et l'IA.</p>
+              </div>
+              <div class="cb-hero-scroll" data-magnetic>
+                <div class="cb-scroll-circle">
+                  <svg viewBox="0 0 100 100">
+                    <path id="scrollPath" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none"/>
+                    <text>
+                      <textPath href="#scrollPath">SCROLL DOWN • SCROLL DOWN • SCROLL DOWN • </textPath>
+                    </text>
+                  </svg>
+                  <div class="cb-scroll-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
