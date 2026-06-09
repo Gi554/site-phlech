@@ -63,33 +63,61 @@ updateSimpleParallax();
 window.addEventListener("scroll", updateSimpleParallax, { passive: true });
 window.addEventListener("resize", updateSimpleParallax);
 
-// Team Horizontal/Vertical Accordion Interaction
-const initTeamAccordion = () => {
-  const accordionItems = document.querySelectorAll(".accordion-item");
-  if (accordionItems.length === 0) return;
+// Cuberto Style Cursor & Magnetic Effects
+const initCubertoCursor = () => {
+  const cursor = document.getElementById("custom-cursor");
+  const links = document.querySelectorAll("a, button, .magnetic");
+  
+  if (!cursor) return;
 
-  accordionItems.forEach((item) => {
-    // Desktop hover interaction
-    item.addEventListener("mouseenter", () => {
-      if (window.innerWidth > 768) {
-        accordionItems.forEach((i) => i.classList.remove("active"));
-        item.classList.add("active");
-      }
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  const animateCursor = () => {
+    // Smooth follow effect
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    
+    cursor.style.left = `${cursorX}px`;
+    cursor.style.top = `${cursorY}px`;
+    
+    requestAnimationFrame(animateCursor);
+  };
+  animateCursor();
+
+  // Hover states
+  links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+      cursor.classList.add("active");
+    });
+    link.addEventListener("mouseleave", () => {
+      cursor.classList.remove("active");
     });
 
-    // Mobile click interaction
-    item.addEventListener("click", (e) => {
-      if (window.innerWidth <= 768) {
-        if (!item.classList.contains("active")) {
-          e.preventDefault(); // Stop navigation
-          accordionItems.forEach((i) => i.classList.remove("active"));
-          item.classList.add("active");
-        }
-      }
-    });
+    // Magnetic effect
+    if (link.classList.contains("magnetic")) {
+      link.addEventListener("mousemove", (e) => {
+        const rect = link.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        link.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      });
+      
+      link.addEventListener("mouseleave", () => {
+        link.style.transform = `translate(0px, 0px)`;
+      });
+    }
   });
 };
 
-document.addEventListener("DOMContentLoaded", initTeamAccordion);
-initTeamAccordion(); // Call immediately in case DOMContentLoaded has already fired
+document.addEventListener("DOMContentLoaded", () => {
+  initTeamAccordion();
+  initCubertoCursor();
+});
 

@@ -16,64 +16,53 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="is-cuberto-style">
+    <div id="custom-cursor"></div>
     <div class="site-shell">
       <header class="site-header" data-header>
         <a class="brand" href="#top" aria-label="Phlech">
           <img src="assets/logo-horizontal-dark.svg" alt="Phlech" />
         </a>
         <nav class="main-nav" aria-label="Navigation principale">
-          <a href="#services">Services</a>
-          <a href="equipe.html">Équipe</a>
-          <a href="#contact">Contact</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="equipe.html" class="nav-link">Équipe</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </nav>
-        <a class="header-cta" href="#contact">
+        <a class="header-cta magnetic" href="#contact">
           <span>Demander un audit</span>
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M5 12h13m-5-5 5 5-5 5" />
-          </svg>
         </a>
       </header>
 
       <main id="top">
-        <section class="hero" id="top">
-          <div class="hero-inner">
-            <div class="hero-content">
-              <div class="hero-head">
-                <span class="hero-badge">Ingénierie & Solutions IT</span>
-                <h1>Façonner le futur numérique de votre <em>entreprise</em>.</h1>
-                <p>
-                  Nous concevons des solutions logicielles sur mesure, sécurisons vos infrastructures critiques, et intégrons l'intelligence artificielle pour décupler votre efficacité opérationnelle.
-                </p>
-                <div class="hero-ctas">
-                  <a class="btn-dark-primary" href="#contact">
-                    <span>Démarrer un projet</span>
-                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </a>
-                  <a class="btn-dark-ghost" href="#services">Découvrir l'agence</a>
+        <section class="hero-cuberto" id="top">
+          <div class="hero-cuberto-inner">
+            <div class="hero-title-wrap">
+              <h1 class="reveal-text">Façonner le futur</h1>
+              <h1 class="reveal-text">numérique <em>entreprise.</em></h1>
+            </div>
+            
+            <div class="hero-bottom">
+              <div class="hero-description">
+                <p>Nous concevons des solutions logicielles sur mesure, sécurisons vos infrastructures, et intégrons l'IA pour décupler votre efficacité.</p>
+                <div class="hero-actions">
+                  <a href="#contact" class="btn-cuberto magnetic">Démarrer un projet</a>
                 </div>
               </div>
-            </div>
-
-            <div class="hero-visual" data-parallax-scope>
-              <div class="orb-container">
-                <div class="orb-core"></div>
-                <div class="orb-ring orb-ring-1"></div>
-                <div class="orb-ring orb-ring-2"></div>
-                <div class="orb-floating-card card-ai">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="6" height="6"></rect><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path></svg>
-                  <span>IA Solutions</span>
-                </div>
-                <div class="orb-floating-card card-cyber">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                  <span>Cybersec</span>
+              <div class="hero-tag">
+                <div class="tag-circle">
+                  <svg viewBox="0 0 100 100">
+                    <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+                    <text>
+                      <textPath href="#circlePath">
+                        PHLECH • SOLUTIONS • IA • CYBER • INFRA • 
+                      </textPath>
+                    </text>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
+        </section>
 
           <div class="hero-offers">
             <a href="#services" class="hero-offer">
