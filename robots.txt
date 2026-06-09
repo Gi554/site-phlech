@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://phlech.com/sitemap.xml
