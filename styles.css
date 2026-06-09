@@ -185,41 +185,24 @@ select {
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding-top: 130px;
-  padding-bottom: 0;
-  background: var(--green-950);
-  color: #fff;
+  background: var(--stone-050);
 }
 
-/* Fond dégradé animé en mesh */
+/* Background subtle gradient */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background:
-    radial-gradient(ellipse 70% 60% at 15% 20%, rgba(97, 189, 172, 0.22) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 85% 80%, rgba(242, 201, 201, 0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 60% 10%, rgba(97, 189, 172, 0.1) 0%, transparent 55%);
-  animation: heroMeshDrift 14s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 80% 20%, rgba(97, 189, 172, 0.05), transparent 50%);
   pointer-events: none;
 }
 
-/* Grille subtile */
 .hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
+  display: none;
 }
 
 @keyframes heroMeshDrift {
@@ -228,13 +211,20 @@ select {
   100% { opacity: 1; background-position: 5% 3%; }
 }
 
-/* Conteneur intérieur */
 .hero-inner {
   position: relative;
-  z-index: 1;
-  width: min(1180px, calc(100% - 40px));
+  z-index: 2;
+  width: min(1280px, calc(100% - 40px));
   margin: 0 auto;
-  padding-bottom: clamp(60px, 8vw, 100px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-content {
+  flex: 1.2;
+  max-width: 700px;
 }
 
 /* Bloc titre */
@@ -245,16 +235,14 @@ select {
 
 .hero-badge {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border: 1px solid rgba(97, 189, 172, 0.35);
+  padding: 8px 16px;
+  background: rgba(25, 142, 117, 0.08);
+  color: var(--green-700);
   border-radius: 99px;
-  color: var(--mint-500);
-  font-size: 0.73rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin-bottom: 28px;
 }
 
@@ -263,37 +251,33 @@ select {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--mint-500);
-  box-shadow: 0 0 8px var(--mint-500);
+  background: var(--green-700);
+  box-shadow: 0 0 8px var(--green-700);
   animation: heroBadgePulse 2.4s infinite;
 }
 
-@keyframes heroBadgePulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.8); }
-}
-
 .hero-head h1 {
-  margin: 0 0 24px;
-  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
   line-height: 1.05;
   font-weight: 900;
-  letter-spacing: -0.03em;
-  color: #fff;
+  margin: 0 0 28px 0;
+  color: var(--green-950);
+  letter-spacing: -0.02em;
 }
 
 .hero-head h1 em {
   font-style: normal;
-  color: var(--mint-500);
+  background: linear-gradient(135deg, var(--green-700), var(--mint-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-head p {
-  max-width: 620px;
-  margin: 0 0 36px;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: clamp(0.98rem, 1.3vw, 1.12rem);
-  line-height: 1.72;
-  font-weight: 450;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 600px;
+  margin-bottom: 40px;
 }
 
 /* CTA buttons */
@@ -304,44 +288,113 @@ select {
 }
 
 .hero-ctas .btn-dark-primary {
+  padding: 0 32px;
+  min-height: 56px;
+  background: var(--green-950);
+  color: #fff;
+  border-radius: 99px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 28px;
-  min-height: 50px;
-  background: var(--mint-500);
-  color: var(--green-950);
-  border-radius: 999px;
-  font-size: 0.9rem;
+  gap: 12px;
   font-weight: 800;
+  font-size: 0.9rem;
   text-decoration: none;
-  transition: background 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hero-ctas .btn-dark-primary:hover {
-  background: #7de8cf;
   transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(13, 63, 50, 0.2);
 }
 
 .hero-ctas .btn-dark-ghost {
+  padding: 0 32px;
+  min-height: 56px;
+  border: 1px solid var(--line);
+  color: var(--green-950);
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 0 24px;
-  min-height: 50px;
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 999px;
-  color: rgba(255,255,255,0.78);
-  font-size: 0.88rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: border-color 0.25s ease, color 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .hero-ctas .btn-dark-ghost:hover {
-  border-color: rgba(255,255,255,0.45);
-  color: #fff;
+  background: rgba(13, 63, 50, 0.04);
   transform: translateY(-2px);
+}
+
+/* Visuel Interactif Phlech Orb */
+.hero-visual {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  position: relative;
+}
+
+.orb-container {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  transform: translate(var(--mx, 0), var(--my, 0));
+  transition: transform 0.1s ease-out;
+}
+
+.orb-core {
+  position: absolute;
+  inset: 20%;
+  background: radial-gradient(circle at 30% 30%, var(--mint-500), var(--green-700));
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(25, 142, 117, 0.35);
+  animation: orbFloat 6s ease-in-out infinite;
+}
+
+.orb-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(25, 142, 117, 0.1);
+  border-radius: 50%;
+}
+
+.orb-ring-1 { animation: rotate 15s linear infinite; }
+.orb-ring-2 { inset: -15%; border-style: dashed; animation: rotate 25s linear infinite reverse; }
+
+.orb-floating-card {
+  position: absolute;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 20px 40px rgba(13, 63, 50, 0.1);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--green-950);
+}
+
+.orb-floating-card svg { width: 22px; height: 22px; color: var(--green-700); }
+.card-ai { top: 0; right: -20px; animation: cardFloat 5s ease-in-out infinite; }
+.card-cyber { bottom: 10%; left: -30px; animation: cardFloat 7s ease-in-out infinite 1s; }
+
+@keyframes orbFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.02); } }
+@keyframes cardFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+@media (max-width: 1024px) {
+  .hero { min-height: auto; padding-top: 140px; padding-bottom: 60px; }
+  .hero-inner { flex-direction: column; text-align: center; }
+  .hero-content { max-width: 100%; }
+  .hero-head p { margin-inline: auto; }
+  .hero-ctas { justify-content: center; }
+  .hero-visual { height: 400px; margin-top: 40px; }
 }
 
 /* ── Grille de 4 offres de services ── */
