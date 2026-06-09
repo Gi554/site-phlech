@@ -63,67 +63,33 @@ updateSimpleParallax();
 window.addEventListener("scroll", updateSimpleParallax, { passive: true });
 window.addEventListener("resize", updateSimpleParallax);
 
-// Cuberto Reproduction JS
-const initCuberto = () => {
-  // 1. Mouse Follower (Cursor)
-  const cursor = document.getElementById('cb-cursor');
-  let mouseX = 0, mouseY = 0;
-  let cursorX = 0, cursorY = 0;
+// Team Horizontal/Vertical Accordion Interaction
+const initTeamAccordion = () => {
+  const accordionItems = document.querySelectorAll(".accordion-item");
+  if (accordionItems.length === 0) return;
 
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  gsap.ticker.add(() => {
-    cursorX += (mouseX - cursorX) * 0.1;
-    cursorY += (mouseY - cursorY) * 0.1;
-    gsap.set(cursor, { x: cursorX, y: cursorY });
-  });
-
-  // 2. Magnetic Elements
-  const magneticElements = document.querySelectorAll('[data-magnetic]');
-  magneticElements.forEach((el) => {
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      gsap.to(el, {
-        x: x * 0.4,
-        y: y * 0.4,
-        duration: 0.4,
-        ease: 'power2.out'
-      });
+  accordionItems.forEach((item) => {
+    // Desktop hover interaction
+    item.addEventListener("mouseenter", () => {
+      if (window.innerWidth > 768) {
+        accordionItems.forEach((i) => i.classList.remove("active"));
+        item.classList.add("active");
+      }
     });
-    el.addEventListener('mouseleave', () => {
-      gsap.to(el, {
-        x: 0,
-        y: 0,
-        duration: 0.4,
-        ease: 'elastic.out(1, 0.3)'
-      });
+
+    // Mobile click interaction
+    item.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768) {
+        if (!item.classList.contains("active")) {
+          e.preventDefault(); // Stop navigation
+          accordionItems.forEach((i) => i.classList.remove("active"));
+          item.classList.add("active");
+        }
+      }
     });
-  });
-
-  // 3. Cursor Hover Effect
-  const interactive = document.querySelectorAll('a, button, .cb-menu-toggle, [data-magnetic]');
-  interactive.forEach((el) => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-  });
-
-  // 4. Hero Reveal Animation
-  gsap.to('.cb-hero-line span', {
-    y: 0,
-    stagger: 0.1,
-    duration: 1.2,
-    ease: 'power4.out',
-    delay: 0.5
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  initCuberto();
-  initTeamAccordion(); // Keeping existing logic if needed
-});
+document.addEventListener("DOMContentLoaded", initTeamAccordion);
+initTeamAccordion(); // Call immediately in case DOMContentLoaded has already fired
 

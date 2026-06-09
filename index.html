@@ -10,61 +10,52 @@
     <title>Phlech | Solutions numériques, cybersécurité et IA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   </head>
-  <body class="cuberto-page">
-    <div id="cb-cursor"></div>
-    
-    <div class="cb-main">
-      <header class="cb-header">
-        <div class="cb-header-content">
-          <a class="cb-logo" href="#top">
-            <img src="assets/logo-horizontal-dark.svg" alt="Phlech" />
-          </a>
-          <nav class="cb-nav">
-            <div class="cb-nav-item"><a href="#services" data-magnetic>Services</a></div>
-            <div class="cb-nav-item"><a href="equipe.html" data-magnetic>Équipe</a></div>
-            <div class="cb-nav-item"><a href="#contact" data-magnetic>Contact</a></div>
-          </nav>
-          <div class="cb-menu-toggle" data-magnetic>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-header>
+        <a class="brand" href="#top" aria-label="Phlech">
+          <img src="assets/logo-horizontal-dark.svg" alt="Phlech" />
+        </a>
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="#services">Services</a>
+          <a href="equipe.html">Équipe</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="header-cta" href="#contact">
+          <span>Demander un audit</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M5 12h13m-5-5 5 5-5 5" />
+          </svg>
+        </a>
       </header>
 
-      <main>
-        <section class="cb-hero" id="top">
-          <div class="cb-hero-container">
-            <div class="cb-hero-title">
-              <div class="cb-hero-line"><span>Digital Design &</span></div>
-              <div class="cb-hero-line"><span>Engineering <em>Agency</em></span></div>
-            </div>
-            
-            <div class="cb-hero-footer">
-              <div class="cb-hero-description">
-                <p>Phlech est une agence d'ingénierie numérique spécialisée dans la création de solutions logicielles, la cybersécurité et l'IA.</p>
-              </div>
-              <div class="cb-hero-scroll" data-magnetic>
-                <div class="cb-scroll-circle">
-                  <svg viewBox="0 0 100 100">
-                    <path id="scrollPath" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none"/>
-                    <text>
-                      <textPath href="#scrollPath">SCROLL DOWN • SCROLL DOWN • SCROLL DOWN • </textPath>
-                    </text>
+      <main id="top">
+        <section class="hero" id="top">
+          <div class="hero-inner">
+            <div class="hero-head">
+              <span class="hero-badge">Ingénierie & Solutions IT</span>
+              <h1>Façonner le futur numérique de votre <em>entreprise</em>.</h1>
+              <p>
+                Nous concevons des solutions logicielles sur mesure, sécurisons vos infrastructures critiques, et intégrons l'intelligence artificielle pour décupler votre efficacité opérationnelle.
+              </p>
+              <div class="hero-ctas">
+                <a class="btn-dark-primary" href="#contact">
+                  <span>Démarrer un projet</span>
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
-                  <div class="cb-scroll-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
-                  </div>
-                </div>
+                </a>
+                <a class="btn-dark-ghost" href="#services">Découvrir l'agence</a>
               </div>
             </div>
           </div>
-        </section>
 
           <div class="hero-offers">
             <a href="#services" class="hero-offer">
