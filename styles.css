@@ -1661,7 +1661,8 @@ select {
 /* Spécificités pour les images des membres */
 .collage-capsule img[src*="louange"] { object-position: 50% 20%; }
 .collage-capsule img[src*="giovani"] { object-position: 50% 15%; }
-.collage-capsule img[src*="genevive"] { object-position: 50% 12%; }
+.collage-capsule img[src*="genevieve"] { object-position: 50% 12%; }
+.collage-capsule img[src*="leonel"] { object-position: 50% 25%; }
 .collage-capsule img[src*="esperand"] { object-position: 50% 10%; }
 .collage-capsule img[src*="cephas"] { object-position: 50% 10%; }
 .collage-capsule img[src*="cossou"] { object-position: 50% 10%; }
